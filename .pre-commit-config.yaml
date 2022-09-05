@@ -31,7 +31,7 @@ repos:
     rev: v2.1.0
     hooks:
       - id: codespell
-        args: ["--skip", "*.ipynb", "-L", "formating,theis"]
+        args: ["--skip", "*.ipynb", "-L", "formating,theis,te,nd,thre,Gool,gool,lod,patten,confectionary"]
   - repo: https://github.com/executablebooks/mdformat
     rev: 0.7.9
     hooks:
@@ -41,22 +41,21 @@ repos:
           - mdformat-openmmlab
           - mdformat_frontmatter
           - linkify-it-py
-  # TODO: uncomment after mmengine rebase
-  # - repo: local
-  #   hooks:
-  #     - id: update-model-index
-  #       name: update-model-index
-  #       description: Collect model information and update model-index.yml
-  #       entry: .dev_scripts/update_model_index.py
-  #       additional_dependencies: [mmengine]
-  #       language: python
-  #       files: ^configs/.*\.md$
-  #       require_serial: true
-  # - repo: https://github.com/myint/docformatter
-  #   rev: v1.3.1
-  #   hooks:
-  #     - id: docformatter
-  #       args: ["--in-place", "--wrap-descriptions", "79"]
+  - repo: local
+    hooks:
+      - id: update-model-index
+        name: update-model-index
+        description: Collect model information and update model-index.yml
+        entry: .dev_scripts/update_model_index.py
+        additional_dependencies: [mmengine]
+        language: python
+        files: ^configs/.*\.md$
+        require_serial: true
+  - repo: https://github.com/myint/docformatter
+    rev: v1.3.1
+    hooks:
+      - id: docformatter
+        args: ["--in-place", "--wrap-descriptions", "79"]
   - repo: https://github.com/open-mmlab/pre-commit-hooks
     rev: v0.2.0
     hooks:
